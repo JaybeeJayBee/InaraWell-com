@@ -8,27 +8,22 @@
     --color-text-dark: #1C2E46;
 }
 
-/* --- CRITICAL STRUCTURAL FIXES --- */
+/* --- CRITICAL STRUCTURAL FIXES (FINAL ATTEMPT) --- */
 
-/* FIX #1: Prevent "1" from appearing by removing all list style context from the container */
+/* FIX #1: The "1" Fix - Aggressively remove all list markers */
 #nav-overlay-container, #nav-overlay-container * {
     list-style: none !important;
+    list-style-type: none !important;
 }
 
-/* FIX #2: Hide the component placeholders on load (FOUC fix) */
+/* FIX #2: FOUC Fix - Hide placeholder *content* until script runs */
+/* We set a very low minimum height on the placeholders so they don't take up space */
 #nav-overlay-container, #footer-container {
-    visibility: hidden;
-    height: 0;
-    overflow: hidden;
+    min-height: 1px; 
+    overflow: hidden; 
 }
-
-/* When the JS loads the content, the placeholders are made visible again */
-#nav-overlay-container:not(:empty), #footer-container:not(:empty) {
-    visibility: visible;
-    height: auto;
-    overflow: visible;
-}
-/* --- END CRITICAL STRUCTURAL FIXES --- */
+/* When content is injected, it will override this height with its actual size. */
+/* If the issue persists, the JS must be setting the initial visibility. */
 
 
 /* --- CRITICAL GLOBAL RESET AND BOUNDARY FIX --- */
@@ -345,6 +340,8 @@ body {
     margin-bottom: 20px;
     line-height: 1.1;
     font-weight: 900;
+    /* FIX FOR MISALIGNMENT ON MOBILE */
+    max-width: 100%;
 }
 
 /* Adjusted H2 size to be the second line of content */
