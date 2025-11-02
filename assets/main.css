@@ -6,18 +6,22 @@
     --color-accent: #ADD8E6; /* Light Blue Accent */
     --color-text-light: #ffffff;
     --color-text-dark: #1C2E46;
+    
+    /* NEW: Define the fixed height for the footer */
+    --footer-height: 250px; 
 }
 
 /* --- CRITICAL GLOBAL RESET AND BOUNDARY FIX --- */
-/* Reset default margins/padding on the root elements */
+/* This is the most aggressive margin reset */
 html, body {
-    margin: 0;
-    padding: 0;
+    margin: 0 !important;
+    padding: 0 !important;
     width: 100%;
+    height: 100%; /* Important for Sticky Footer */
     overflow-x: hidden; /* Prevents horizontal scroll */
+    position: relative; /* Ensures alignment */
 }
 
-/* The universal box model is correctly defined here */
 * {
     box-sizing: border-box;
 }
@@ -29,39 +33,57 @@ body {
     background-color: var(--color-gradient-light); 
     color: var(--color-text-dark);
     
-    /* 100% of the viewport height (for the wrap to fill) */
-    min-height: 100vh;
+    /* --- CLASSIC STICKY FOOTER SOLUTION --- */
+    min-height: 100%; 
+    position: relative; 
+    
+    /* This ensures content-wrap is the main column */
+    display: block; 
 }
 
 /* --- KEY STICKY FOOTER FIX: WRAPPER LOGIC --- */
-/* This wrapper ensures the content area stretches properly */
+/* The wrapper contains all content EXCEPT the footer */
 #content-wrap {
-    /* Takes up ALL space between the top of the body and the bottom */
-    flex-grow: 1; 
+    min-height: 100vh; /* Must be full viewport height */
     
-    /* Applies the Flexbox logic to its children: #page-content and #footer-container */
-    display: flex;
-    flex-direction: column;
+    /* The core of the fix: Pull the footer up into the content area */
+    margin-bottom: calc(var(--footer-height) * -1); 
+    
+    /* Resetting the Flex properties that are no longer needed */
+    display: block; 
 }
+
+/* The element that creates space for the footer at the bottom of the page */
+#footer-push {
+    height: var(--footer-height); 
+}
+
+/* The footer container must be full width and fixed height */
+#footer-container {
+    height: var(--footer-height); 
+    width: 100%;
+    /* No position: fixed; is needed as the margin takes care of placement */
+}
+
 
 /* -------------------------------------- */
 /* --- 1. Floating Overlay Icon (Trigger) --- */
 /* -------------------------------------- */
 #nav-trigger {
     position: fixed;
-    top: 20px; /* Offset from the edge */
-    right: 20px; /* Offset from the edge */
+    top: 20px; 
+    right: 20px; 
     width: 50px;
     height: 50px;
     background-color: var(--color-primary);
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    display: flex; /* Centers the bars */
+    display: flex; 
     flex-direction: column;
     justify-content: space-around;
     padding: 10px;
-    z-index: 1001; /* Must be above the main content */
+    z-index: 1001; 
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
@@ -74,7 +96,7 @@ body {
 
 /* Visibility Control (Scroll) */
 #nav-trigger.is-hidden {
-    transform: translateY(-100px); /* Move out of view when scrolling down */
+    transform: translateY(-100px); 
     opacity: 0;
 }
 
@@ -88,7 +110,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(28, 46, 70, 0.98); /* Dark Blue with slight transparency */
+    background-color: rgba(28, 46, 70, 0.98); 
     color: var(--color-text-light);
     z-index: 1000;
     transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
@@ -123,7 +145,7 @@ body {
 }
 
 .overlay-menu a:hover {
-    color: var(--color-accent); /* Highlight on hover */
+    color: var(--color-accent); 
 }
 
 /* Close Button (X) */
@@ -150,14 +172,16 @@ body {
 /* --- 3. Standardized Footer Component --- */
 /* -------------------------------------- */
 .site-footer {
-    background-color: var(--color-primary); /* Dark Blue background */
+    /* The footer content fills the fixed-height footer-container */
+    background-color: var(--color-primary); 
     color: var(--color-text-light);
     padding: 40px 20px;
+    height: 100%; 
 }
 
 .footer-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Multi-column structure */
+    grid-template-columns: repeat(4, 1fr); 
     gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
@@ -192,14 +216,14 @@ body {
 .footer-logo {
     font-size: 1.5rem;
     font-weight: bold;
-    color: var(--color-accent); /* Highlight the site name */
+    color: var(--color-accent); 
     margin-bottom: 15px;
 }
 
 .footer-links-group, .contact-btn-group {
     display: flex;
     flex-direction: column;
-    gap: 8px; /* Spacing between links */
+    gap: 8px; 
 }
 
 .social-links {
@@ -210,16 +234,15 @@ body {
 }
 
 .social-links a {
-    color: var(--color-text-light); /* White icons */
+    color: var(--color-text-light); 
     transition: color 0.3s;
 }
 
 .social-links a:hover {
-    color: var(--color-accent); /* Highlight on hover */
+    color: var(--color-accent); 
 }
 
 .footer-bottom {
-    /* Tweak for perfect centering on all screen sizes */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -241,26 +264,23 @@ body {
 
 /* Override existing link styling for the footer's nested groups */
 .footer-links-group a, .contact-btn-group a {
-    width: fit-content; /* Makes the hover effect cleaner */
+    width: fit-content; 
 }
 
 /* Responsiveness for Footer */
 @media (max-width: 768px) {
     .footer-grid {
-        grid-template-columns: repeat(2, 1fr); /* Two columns on tablet */
+        grid-template-columns: repeat(2, 1fr); 
     }
 }
 
 @media (max-width: 480px) {
     .footer-grid {
-        grid-template-columns: 1fr; /* Single column on mobile */
+        grid-template-columns: 1fr; 
         text-align: center;
     }
     .footer-links-group, .contact-btn-group {
         align-items: center;
-    }
-    .footer-links ul, .footer-legal ul {
-        padding-left: 0;
     }
 }
 
@@ -270,9 +290,8 @@ body {
 /* -------------------------------------- */
 
 #page-content {
-    /* --- STICKY FOOTER SOLUTION: PART 3 --- */
-    /* This ensures the main content takes up ALL remaining space within the wrapper */
-    flex-grow: 1; 
+    /* Resets Flexbox property */
+    flex-grow: unset; 
     
     padding: 20px;
     max-width: 1200px;
@@ -323,7 +342,7 @@ body {
 }
 
 .service-card {
-    background-color: var(--color-secondary); /* Light Blue/Off-White background */
+    background-color: var(--color-secondary); 
     border-radius: 10px;
     padding: 30px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -337,7 +356,7 @@ body {
 }
 
 .card-title {
-    color: var(--color-primary); /* Dark Blue heading */
+    color: var(--color-primary); 
     margin-bottom: 10px;
 }
 
@@ -349,9 +368,9 @@ body {
 .card-cta {
     display: inline-block;
     padding: 8px 15px;
-    background-color: var(--color-accent); /* Light Blue Accent button */
+    background-color: var(--color-accent); 
     color: var(--color-primary);
     text-decoration: none;
     border-radius: 5px;
     font-weight: bold;
-}
+    }
