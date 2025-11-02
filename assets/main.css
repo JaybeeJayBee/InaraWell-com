@@ -8,20 +8,18 @@
     --color-text-dark: #1C2E46;
 }
 
-/* --- CRITICAL GLOBAL RESET --- */
-/* This is the key fix for unexplained white space/misalignment */
+/* --- CRITICAL GLOBAL RESET AND BOUNDARY FIX --- */
+/* Reset default margins/padding on the root elements */
 html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    overflow-x: hidden; /* Prevents horizontal scroll from misplaced elements */
+    overflow-x: hidden; /* Prevents horizontal scroll */
 }
 
+/* The universal box model is correctly defined here */
 * {
     box-sizing: border-box;
-    /* Resetting margins/padding here in addition to html, body for safety */
-    margin: 0; 
-    padding: 0;
 }
 
 
@@ -31,10 +29,19 @@ body {
     background-color: var(--color-gradient-light); 
     color: var(--color-text-dark);
     
-    /* --- STICKY FOOTER SOLUTION: PART 1 (Confirmed) --- */
+    /* 100% of the viewport height (for the wrap to fill) */
+    min-height: 100vh;
+}
+
+/* --- KEY STICKY FOOTER FIX: WRAPPER LOGIC --- */
+/* This wrapper ensures the content area stretches properly */
+#content-wrap {
+    /* Takes up ALL space between the top of the body and the bottom */
+    flex-grow: 1; 
+    
+    /* Applies the Flexbox logic to its children: #page-content and #footer-container */
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Ensures body takes up full screen height */
 }
 
 /* -------------------------------------- */
@@ -263,8 +270,9 @@ body {
 /* -------------------------------------- */
 
 #page-content {
-    /* --- STICKY FOOTER SOLUTION: PART 2 (Confirmed) --- */
-    flex-grow: 1; /* This pushes the footer to the bottom, taking up all available space */
+    /* --- STICKY FOOTER SOLUTION: PART 3 --- */
+    /* This ensures the main content takes up ALL remaining space within the wrapper */
+    flex-grow: 1; 
     
     padding: 20px;
     max-width: 1200px;
@@ -346,4 +354,4 @@ body {
     text-decoration: none;
     border-radius: 5px;
     font-weight: bold;
-    }
+}
