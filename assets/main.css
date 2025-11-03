@@ -694,3 +694,194 @@ body {
 .center-text-fix {
     text-align: center; /* This centers the inline/inline-block children like the button */
 }
+/* --- Styles for affiliate.html (Affiliate Program Page) --- */
+
+/* Font Import for Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+body {
+    /* Override body font and background only for the affiliate page */
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #F7F7F0, #ADD8E6);
+}
+
+.affiliate-page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    flex-grow: 1;
+}
+
+/* Header Animation */
+.affiliate-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--color-primary);
+    border-radius: 2px;
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.8;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+}
+
+/* Affiliate Benefits Grid */
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.benefit-card {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeInUp 0.6s ease;
+}
+
+.benefit-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.benefit-icon {
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.benefit-card:hover .benefit-icon {
+    transform: scale(1.1);
+}
+
+.benefit-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+    color: var(--color-primary);
+}
+
+.benefit-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: var(--color-primary);
+}
+
+.benefit-desc {
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+/* CTA Section Styles */
+.affiliate-cta-section {
+    text-align: center; 
+    margin-top: 4rem;
+}
+
+.cta-heading {
+    font-size: 1.8rem; 
+    margin-bottom: 1.5rem;
+}
+
+.cta-text {
+    max-width: 600px; 
+    margin: 0 auto 2rem; 
+    line-height: 1.6;
+}
+
+/* CTA Button */
+.cta-button {
+    display: inline-block;
+    background: var(--color-primary);
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    margin: 2rem auto 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(28, 46, 70, 0.2);
+    animation: pulse 2s infinite;
+}
+
+.cta-button:hover {
+    background: #14253a;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(28, 46, 70, 0.3);
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Floating Background Elements */
+.floating-elements {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.floating-element {
+    position: absolute;
+    background: rgba(227, 238, 247, 0.6); /* Using var(--color-secondary) */
+    border-radius: 50%;
+    animation: float 15s infinite linear;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(-1000px) rotate(720deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .section-title { font-size: 2rem; }
+    .benefits-grid { grid-template-columns: 1fr; }
+}
