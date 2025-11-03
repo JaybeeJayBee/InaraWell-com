@@ -381,13 +381,16 @@ body {
     color: var(--color-primary); /* Dark text for clarity */
 }
 
+/* Updated Welcome Heading (Now inside Hero) */
 .main-welcome-heading {
-    text-align: center;
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     font-weight: 900;
-    color: var(--color-primary);
-    padding: 60px 20px 0; /* More top padding */
+    color: var(--color-text-light); /* White text inside dark hero */
+    padding: 0 0 20px 0; 
     letter-spacing: -0.5px;
+    /* Added to center the text above the titles */
+    width: 100%;
+    margin: 0 auto; 
 }
 
 .accent-background {
@@ -398,18 +401,24 @@ body {
     text-align: center;
 }
 
-/* 1. HERO SECTION (Modern/Systemic Look) */
+/* 1. HERO SECTION (Unified Header Block) */
 .hero {
     position: relative;
-    height: 500px; /* Taller hero */
+    height: 550px; /* Increased height to accommodate the welcome text */
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--color-text-light); 
     text-align: center;
-    margin-bottom: 0; /* Connect hero to next section */
-    border-bottom: 5px solid var(--color-accent); /* Clean separator */
+    margin-bottom: 0; 
+    border-bottom: 5px solid var(--color-accent); 
 }
+/* Reusing the styling of the Hero on the new unified block */
+.full-header-block {
+    background-color: var(--color-primary); /* Ensures background is dark blue */
+    padding-top: 50px;
+}
+
 
 .hero-background-image {
     position: absolute;
@@ -417,11 +426,10 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    /* Swapping generic background for a modern, abstract blue image */
-    background: url('https://images.unsplash.com/photo-1517430816045-df4b7de1168b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80') no-repeat center center/cover;
     /* Using a dark overlay for high contrast text */
+    background: url('https://images.unsplash.com/photo-1517430816045-df4b7de1168b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80') no-repeat center center/cover;
     background-color: var(--color-primary); 
-    mix-blend-mode: multiply; /* Darkens the image */
+    mix-blend-mode: multiply; 
     opacity: 1; 
     z-index: 1;
 }
@@ -430,14 +438,19 @@ body {
     position: relative;
     z-index: 2;
     padding: 20px;
-    background-color: rgba(28, 46, 70, 0.2); /* Subtle dark container for better text readability */
+    /* Removed the inner background color since the hero is now the background */
+    background-color: transparent; 
     border-radius: 10px;
+    /* Center all items */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .hero-main-title {
     font-size: 3.8rem;
     margin-bottom: 15px;
-    text-shadow: none;
     font-weight: 900;
     letter-spacing: -1px;
 }
@@ -445,23 +458,23 @@ body {
 .hero-sub-title {
     font-size: 1.8rem;
     font-weight: 300;
-    text-shadow: none;
-    margin-bottom: 30px;
+    margin-bottom: 0; /* Removed bottom margin since CTA is gone */
 }
 
-.hero-cta {
-    background-color: var(--color-accent);
-    color: var(--color-primary);
-    font-weight: 700;
-    padding: 15px 35px;
-    border-radius: 50px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+/* --- Welcome To InaraWell Zoom Animation --- */
+.animated-zoom {
+    animation: simpleZoom 4s ease-in-out infinite alternate;
 }
 
-.hero-cta:hover {
-    background-color: var(--color-primary);
-    color: var(--color-text-light);
+@keyframes simpleZoom {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.03);
+    }
 }
+
 
 /* 3. WHY TRUST SECTION (Modern Card Grid) */
 #why-trust {
@@ -603,19 +616,24 @@ body {
     pointer-events: none; /* Crucial: ensures bubbles don't block clicks on content */
 }
 
+/* Targeting ONLY the bubbles in the new header section */
+.header-bubbles .bubble {
+    /* Use Primary Dark Blue for a subtle difference in the main hero */
+    background-color: rgba(28, 46, 70, 0.6); /* --color-primary with high opacity */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
 .bubble {
     position: absolute;
     display: block;
-    width: 30px; /* Increased size for visibility */
+    width: 30px; 
     height: 30px;
-    /* Increased opacity and use of ACCENT color for better visibility */
     background-color: rgba(173, 216, 230, 0.6); /* --color-accent with high opacity */
     bottom: -100px;
     border-radius: 50%;
-    /* Increased duration for slower, calmer float */
     animation: animate 40s linear infinite; 
     opacity: 0; 
-    box-shadow: 0 0 10px var(--color-accent); /* Subtle glow */
+    box-shadow: 0 0 10px var(--color-accent); 
 }
 
 /* Individual bubble settings (increased size and adjusted duration for slow movement) */
@@ -657,8 +675,8 @@ body {
     .full-span { grid-column: auto; }
 }
 @media (max-width: 600px) {
-    .main-welcome-heading { font-size: 2.5rem; padding-top: 40px; }
-    .hero { height: 400px; }
+    .main-welcome-heading { font-size: 2rem; padding-top: 40px; }
+    .hero { height: 450px; }
     .hero-main-title { font-size: 2.2rem; }
     .hero-sub-title { font-size: 1.1rem; }
     .section { padding: 50px 0; }
