@@ -19,6 +19,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InaraWell - Home</title>
+    <link rel="icon" type="image/jpeg" href="https://i.ibb.co/bMgw0WCF/Smart-Select-20251001-110956-Gallery.jpg">
+    <link rel="stylesheet" href="assets/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+    <div id="nav-overlay-container"></div>
+    
+ <main id="page-content">
+    
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Complimentary Creations | InaraWell</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
@@ -41,12 +56,16 @@
             background-color: #f9f9f9;
             color: var(--primary);
             line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
         
         .container {
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 0 auto; /* ⭐ FIX: Centers the container horizontally */
             padding: 0 20px;
+            flex-grow: 1; 
         }
         
         /* Header Styles */
@@ -171,6 +190,7 @@
             }
             
             .products-grid {
+                /* On small screens, ensure the grid still flows well */
                 grid-template-columns: 1fr;
             }
         }
@@ -255,12 +275,18 @@
                 card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
                 observer.observe(card);
             });
-            
-            // Removed code to set the current year in the footer
         });
     </script>
 </body>
 </html>
+</main>
+
+    <div id="footer-container"></div>
+
+    <script src="assets/component-loader.js"></script>
+
+</body>
+                  </html>
 </main>
 
     <div id="footer-container"></div>
