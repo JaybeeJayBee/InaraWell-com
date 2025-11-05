@@ -52,7 +52,10 @@ document.addEventListener('DOMContentLoaded', () => {
             // Close any open submenus when the main menu closes
             document.querySelectorAll('.has-submenu .submenu').forEach(sub => {
                 sub.classList.add('hidden');
-                sub.closest('.has-submenu').querySelector('.submenu-arrow').classList.remove('rotate');
+                const arrow = sub.closest('.has-submenu').querySelector('.submenu-arrow');
+                if (arrow) {
+                    arrow.classList.remove('rotate');
+                }
             });
         });
 
@@ -75,48 +78,50 @@ document.addEventListener('DOMContentLoaded', () => {
         }, false);
     }
     
-    // --- UPDATED: Submenu Dropdown Logic for Multiple Menus ---
+    // --- UPDATED: Submenu Dropdown Logic for Multiple Menus (Handles Missing Arrow) ---
     function setupSubmenuLogic() {
         // Select all elements that can trigger a dropdown (both <a> and <span>)
         document.querySelectorAll('.submenu-toggle').forEach(toggle => {
             
-            // Get the parent list item (li) which holds the submenu
             const parentLi = toggle.closest('.has-submenu');
             const submenu = parentLi.querySelector('.submenu');
-            const arrow = parentLi.querySelector('.submenu-arrow');
+            const arrow = parentLi.querySelector('.submenu-arrow'); // Arrow might be null now
 
-            if (!submenu || !arrow) return;
+            if (!submenu) return;
 
             toggle.addEventListener('click', (e) => {
                 
                 // If it's an <a> tag and the submenu is NOT currently open, prevent default
-                // This allows a second click to navigate if desired, but prioritize dropdown open/close
                 if (toggle.tagName === 'A' && !submenu.classList.contains('hidden')) {
-                    // If the user clicks the link while the submenu is already open, let the navigation happen
+                    // Second click on the A tag navigates
                     return; 
                 }
                 
-                // For both <span> and the first click on an <a> tag, prevent navigation
+                // For both <span> and the first click on an <a> tag, prevent navigation/default action
                 e.preventDefault(); 
                 
                 // Toggle visibility of the submenu
                 submenu.classList.toggle('hidden');
                 
-                // Toggle arrow rotation
-                arrow.classList.toggle('rotate');
+                // Toggle arrow rotation ONLY if the arrow exists
+                if (arrow) {
+                    arrow.classList.toggle('rotate');
+                }
 
                 // Close other open submenus
                 document.querySelectorAll('.has-submenu').forEach(otherLi => {
                     if (otherLi !== parentLi) {
                         otherLi.querySelector('.submenu').classList.add('hidden');
-                        otherLi.querySelector('.submenu-arrow').classList.remove('rotate');
+                        const otherArrow = otherLi.querySelector('.submenu-arrow');
+                        if (otherArrow) {
+                            otherArrow.classList.remove('rotate');
+                        }
                     }
                 });
             });
             
-            // If the element is an <a> tag (like 'Our Creations Showcase'), 
-            // we attach a fallback listener to the arrow itself to only toggle the menu
-            if (toggle.tagName === 'A') {
+            // For the Creation Showcase, keep the arrow clickable to only toggle the menu
+            if (toggle.tagName === 'A' && arrow) {
                 arrow.addEventListener('click', (e) => {
                     e.preventDefault(); // Stop navigation when clicking arrow
                     e.stopPropagation(); // Stop event from propagating up to the link
