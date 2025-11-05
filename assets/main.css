@@ -1571,29 +1571,45 @@ body {
         font-size: 1rem;
     }
 }
-/* --- New Styles for Submenu Dropdown (CORRECTED) --- */
+/* --- New Styles for Submenu Dropdown (FINAL ALIGNMENT CORRECTION) --- */
 
 .has-submenu {
     position: relative;
 }
 
-/* Ensure the main submenu toggle link is visually consistent with other primary links */
+/* Target the submenu toggle (A or SPAN) and force it to look like a centered primary link */
 .overlay-menu .submenu-toggle {
-    /* Main links use font-size: 1.5rem; and font-weight: 600; */
+    /* Inherit main link properties for text and spacing */
+    color: var(--color-text-light);
+    text-decoration: none;
     font-size: 1.5rem; 
     font-weight: 600;
+    padding: 8px 0;
+    
+    /* FIX: Use Flexbox to align content (Text + Arrow) */
+    display: flex;
+    justify-content: center; /* Center the text and arrow block horizontally */
+    align-items: center; /* Align items vertically */
+    width: 100%; /* Ensure it takes up the full width */
+    cursor: pointer; /* Give the SPAN a clickable feel */
+    transition: color 0.3s;
 }
 
-/* Submenu Links: Make these noticeably smaller than the primary links (1.2rem vs 1.5rem) */
+/* Ensure the non-clickable SPAN doesn't get text decoration on hover, only color change */
+.overlay-menu .submenu-toggle:hover {
+    color: var(--color-accent); /* Text highlight on hover */
+    text-decoration: none; /* Crucial: Prevent underline on the SPAN */
+}
+
+
+/* Submenu Links: Keep these smaller than the primary links */
 .overlay-menu .submenu {
     list-style: none;
     padding: 0;
     margin-top: 5px;
-    margin-bottom: 5px; /* Reduced vertical space */
+    margin-bottom: 5px;
     transition: all 0.3s ease-in-out;
     max-height: 500px;
-    
-    /* Center the sub-links better below the parent */
     text-align: center; 
 }
 
@@ -1608,12 +1624,12 @@ body {
 }
 
 .overlay-menu .submenu a {
-    /* FIX: Set a smaller font size for sub-links */
     font-size: 1.2rem; 
-    font-weight: 400; /* Lighter weight helps distinguish it from primary links */
-    padding: 6px 0; /* Less padding than the primary links */
+    font-weight: 400; 
+    padding: 6px 0;
     opacity: 0.9;
-    text-decoration: none; /* Sub-links shouldn't be underlined by default */
+    text-decoration: none;
+    display: block; /* Ensure sub-links take full line width for consistent hover area */
 }
 
 .overlay-menu .submenu a:hover {
@@ -1621,17 +1637,11 @@ body {
     text-decoration: underline;
 }
 
-.submenu-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .submenu-arrow {
-    margin-left: 10px; /* Reduced margin */
-    font-size: 1.1rem; /* Smaller arrow size */
+    margin-left: 10px;
+    font-size: 1.1rem;
     transition: transform 0.3s ease-in-out;
-    color: var(--color-text-light); /* Ensure arrow color consistency */
+    color: var(--color-text-light);
 }
 
 .submenu-arrow.rotate {
