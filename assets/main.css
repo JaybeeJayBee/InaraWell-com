@@ -42,19 +42,19 @@ body {
 /* -------------------------------------- */
 #nav-trigger {
     position: fixed;
-    top: 20px; /* Offset from the edge */
-    right: 20px; /* Offset from the edge */
+    top: 20px; 
+    right: 20px; 
     width: 50px;
     height: 50px;
     background-color: var(--color-primary);
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    display: flex; /* Centers the bars */
+    display: flex; 
     flex-direction: column;
     justify-content: space-around;
     padding: 10px;
-    z-index: 1001; /* Must be above the main content */
+    z-index: 1001; 
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
@@ -67,14 +67,14 @@ body {
 
 /* Visibility Control (Scroll) */
 #nav-trigger.is-hidden {
-    transform: translateY(-100px); /* Move out of view when scrolling down */
+    transform: translateY(-100px); 
     opacity: 0;
 }
 
 
 /* -------------------------------------- */
 /* --- 2. Navigation Menu (Overlay) --- */
-/* --- ADJUSTED FOR ALIGNMENT AND SIZING --- */
+/* --- FINAL ALIGNMENT AND SIZING FIXES --- */
 /* -------------------------------------- */
 #nav-overlay {
     position: fixed;
@@ -107,24 +107,29 @@ body {
     visibility: visible;
 }
 
+.overlay-menu {
+    width: 100%; /* Ensure the menu wrapper takes full width */
+}
+
 .overlay-menu ul {
     list-style: none;
     text-align: center;
-    padding: 20px 0; 
-    max-width: 90%; /* Constraint width to help with center alignment */
+    padding: 20px 20px; /* Add horizontal padding for safety */
+    margin: 0 auto; /* Center the UL */
+    max-width: 400px; /* Limit the max width for better visual appeal on large screens */
 }
 
 .overlay-menu a {
     color: var(--color-text-light);
     text-decoration: none;
     /* REDUCED SIZE */
-    font-size: 1.5rem; 
+    font-size: 1.3rem; 
     font-weight: 700; 
     /* REDUCED SPACING */
-    padding: 8px 0; 
+    padding: 6px 0; 
     display: block;
     transition: color 0.3s, text-shadow 0.3s;
-    white-space: nowrap; /* Prevent most wrapping for clean alignment */
+    /* Removed white-space: nowrap for better wrapping on small devices */
 }
 
 /* WOW-ING DESIGN: DYNAMIC HOVER EFFECT */
@@ -138,18 +143,16 @@ body {
 /* Ensure the text is smaller on very small screens for mobile fit */
 @media (max-width: 480px) {
     .overlay-menu a {
-        font-size: 1.3rem; /* Smallest size for narrow screens */
-        white-space: normal; /* Allow wrapping if needed on very small screens */
+        font-size: 1.15rem; 
     }
 }
 
 /* Close Button (X) */
 #nav-close {
     position: absolute;
-    top: 30px;
-    right: 30px;
-    /* REDUCED SIZE */
-    font-size: 3rem; 
+    top: 20px; /* Moved up slightly */
+    right: 20px; 
+    font-size: 2.5rem; /* Reduced size */
     background: none;
     border: none;
     color: var(--color-accent); 
@@ -170,7 +173,7 @@ body {
 /* --- Professional Navigation Info Styling --- */
 .overlay-info {
     position: absolute; 
-    bottom: 50px;
+    bottom: 20px; /* Reduced distance from the bottom */
     left: 0;
     width: 100%;
     text-align: center;
@@ -178,43 +181,47 @@ body {
 }
 
 .overlay-info h3 {
-    font-size: 1.5rem;
+    font-size: 1.3rem; /* Reduced size */
     font-weight: 700;
     color: var(--color-accent); 
-    margin-top: 20px;
+    margin-top: 10px;
+}
+.overlay-info p {
+    font-size: 0.8rem;
+    opacity: 0.8;
 }
 
 /* --- New Styles for Submenu Dropdown --- */
 
 .has-submenu {
     position: relative;
+    /* Added margin-bottom for better separation between main links */
+    margin-bottom: 5px; 
 }
 
 /* Target the submenu toggle (A or SPAN) and force it to look like a centered primary link */
 .overlay-menu .submenu-toggle {
     color: var(--color-text-light);
     text-decoration: none;
-    /* MATCHED NEW PRIMARY LINK SIZE */
-    font-size: 1.5rem; 
+    font-size: 1.3rem; 
     font-weight: 700; 
-    padding: 8px 0;
+    padding: 6px 0;
     display: block; 
     text-align: center; 
     cursor: pointer; 
     transition: color 0.3s, text-shadow 0.3s;
-    white-space: nowrap; /* Prevent wrapping */
+    /* Removed white-space: nowrap from here too */
 }
 @media (max-width: 480px) {
     .overlay-menu .submenu-toggle {
-        font-size: 1.3rem; 
-        white-space: normal;
+        font-size: 1.15rem; 
     }
 }
 
 /* Submenu Links: These must be visually distinct and smaller */
 .overlay-menu .submenu {
     list-style: none;
-    padding: 5px 0; 
+    padding: 0; 
     margin-top: 5px;
     margin-bottom: 5px;
     transition: all 0.3s ease-in-out;
@@ -229,29 +236,30 @@ body {
 }
 
 .overlay-menu .submenu a, .overlay-menu .submenu span {
-    /* REDUCED SUB-LINK SIZE SIGNIFICANTLY */
-    font-size: 1rem; 
-    font-weight: 400; /* Lighter weight */
+    /* REDUCED SUB-LINK SIZE */
+    font-size: 0.9rem; 
+    font-weight: 400; 
     /* REDUCED SPACING */
-    padding: 4px 0; 
-    opacity: 0.85; /* Make sub-links slightly faded */
+    padding: 2px 0; 
+    opacity: 0.85; 
     text-decoration: none;
     display: block; 
     transition: color 0.3s, opacity 0.3s;
-    white-space: nowrap;
+    /* Removed white-space: nowrap */
 }
 
 .overlay-menu .submenu a:hover, .overlay-menu .submenu span:hover {
     opacity: 1;
     text-decoration: underline;
-    text-shadow: none; /* No glow on sub-links, keep it clean */
+    text-shadow: none; 
+    color: var(--color-accent);
 }
 
 /* Arrow Styling */
 .submenu-arrow {
     display: inline-block;
-    margin-left: 5px; /* Less margin */
-    font-size: 1rem;
+    margin-left: 5px; 
+    font-size: 0.9rem; /* Reduced arrow size */
     transition: transform 0.3s ease-in-out;
     color: var(--color-accent); 
 }
