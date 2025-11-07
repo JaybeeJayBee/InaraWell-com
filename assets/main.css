@@ -89,8 +89,6 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* NEW: Add a subtle overall dark shadow for depth */
-    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5); 
 }
 
 #nav-overlay.hidden {
@@ -106,8 +104,6 @@ body {
 .overlay-menu ul {
     list-style: none;
     text-align: center;
-    /* NEW: Add a faint shadow to the whole menu block for 'floating' feel */
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.1); 
 }
 
 .overlay-menu a {
@@ -115,103 +111,41 @@ body {
     text-decoration: none;
     font-size: 1.5rem; /* Reduced size for professional look */
     font-weight: 600; /* Bolder text for clarity */
-    padding: 12px 20px; /* Increased horizontal padding for a larger target area */
+    padding: 8px 0; /* Reduced padding/spacing */
     display: block;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother, more advanced transition */
-    letter-spacing: 1px; /* Subtle spread for futuristic typography */
-    
-    /* NEW: Initial subtle text-glow (light blue) */
-    text-shadow: 0 0 5px rgba(173, 216, 230, 0.3); 
-    border-radius: 4px; /* Soft rounding */
+    transition: color 0.3s;
 }
 
 .overlay-menu a:hover {
-    color: var(--color-accent); /* Light Blue Accent on hover */
-    text-decoration: none; /* Removed default underline */
-    
-    /* NEW: Stronger, more intense glow on hover */
-    text-shadow: 0 0 10px var(--color-accent), 0 0 20px rgba(173, 216, 230, 0.5);
-    
-    /* NEW: Subtle background highlight (e.g., a "light trace" effect) */
-    background-color: rgba(173, 216, 230, 0.08); 
-    transform: scale(1.05); /* Very slight scale for interaction feedback */
+    color: var(--color-accent); /* Highlight on hover */
+    text-decoration: underline; /* Added professional underline */
+    text-underline-offset: 4px;
 }
 
 /* Ensure the text is smaller on very small screens for mobile fit */
 @media (max-width: 480px) {
     .overlay-menu a {
         font-size: 1.25rem;
-        padding: 10px 15px;
     }
-}
-
-/* --- New Styles for Submenu Dropdown (Applying Futuristic Look) --- */
-
-.overlay-menu .submenu-toggle {
-    /* Inherit and update primary link properties */
-    color: var(--color-text-light);
-    font-size: 1.5rem; 
-    font-weight: 600;
-    padding: 12px 20px;
-    display: block; 
-    text-align: center;
-    cursor: pointer; 
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    letter-spacing: 1px;
-    
-    /* NEW: Initial subtle text-glow */
-    text-shadow: 0 0 5px rgba(173, 216, 230, 0.3);
-    border-radius: 4px; 
-}
-
-.overlay-menu .submenu-toggle:hover {
-    color: var(--color-accent);
-    text-decoration: none; 
-    
-    /* NEW: Stronger, more intense glow on hover */
-    text-shadow: 0 0 10px var(--color-accent), 0 0 20px rgba(173, 216, 230, 0.5);
-    background-color: rgba(173, 216, 230, 0.08);
-    transform: scale(1.05);
-}
-
-/* Submenu Links: Still slightly smaller, but also futuristic */
-.overlay-menu .submenu a {
-    font-size: 1.2rem; 
-    font-weight: 400; 
-    padding: 8px 0; /* Slightly increased vertical padding */
-    opacity: 0.85; /* Subtly dimmed for a secondary feel */
-    text-decoration: none;
-    display: block; 
-    transition: all 0.3s ease-in-out;
-    letter-spacing: 0.5px;
-}
-
-.overlay-menu .submenu a:hover {
-    opacity: 1;
-    color: var(--color-text-light); /* Hover to pure white */
-    text-decoration: none;
-    /* NEW: Subtly different glow for sub-links */
-    text-shadow: 0 0 8px var(--color-text-light); 
-    background-color: rgba(255, 255, 255, 0.05); /* Very light background trace */
 }
 
 /* Close Button (X) */
 #nav-close {
-    /* ... (Existing styles remain) ... */
-    /* NEW: Added text-shadow to the close button for glow */
-    text-shadow: 0 0 10px var(--color-accent);
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 3rem;
+    background: none;
+    border: none;
+    color: var(--color-text-light);
+    cursor: pointer;
+    padding: 10px;
+    transition: transform 0.5s, opacity 0.5s;
 }
 
-#nav-close:hover {
-    /* NEW: Enhanced glow on hover */
-    text-shadow: 0 0 15px var(--color-accent), 0 0 25px rgba(173, 216, 230, 0.7);
-    transform: scale(1.1) rotate(0deg) !important; /* Keep it centered and slightly enlarged */
-    opacity: 1 !important;
-}
-
-/* AI Decision: Spin/Fade-Out Animation for closing - Adjusted */
+/* AI Decision: Spin/Fade-Out Animation for closing */
 #nav-close.animate-close {
-    transform: rotate(360deg) scale(0.5); /* Spin and shrink */
+    transform: rotate(180deg);
     opacity: 0;
 }
 
