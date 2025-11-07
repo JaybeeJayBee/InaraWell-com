@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadComponent('nav-overlay-container', 'components/nav.html').then(() => {
         // Run Navigation setup after the nav.html content has been injected
         setupNavigation();
-        setupSubmenuLogic(); // UPDATED: Now handles multiple submenus
+        setupSubmenuLogic(); // UPDATED: Now handles all submenu logic
     });
     loadComponent('footer-container', 'components/footer.html').then(() => {
         // Run Footer script after injection
@@ -78,57 +78,60 @@ document.addEventListener('DOMContentLoaded', () => {
         }, false);
     }
     
-    // --- UPDATED: Submenu Dropdown Logic for Multiple Menus (Handles Missing Arrow) ---
+    // --- UPDATED: Submenu Dropdown Logic for Multiple Menus ---
     function setupSubmenuLogic() {
-        // Select all elements that can trigger a dropdown (both <a> and <span>)
+        // Select all elements that can trigger a dropdown (both <a> and <span> with class .submenu-toggle)
         document.querySelectorAll('.submenu-toggle').forEach(toggle => {
             
             const parentLi = toggle.closest('.has-submenu');
             const submenu = parentLi.querySelector('.submenu');
-            const arrow = parentLi.querySelector('.submenu-arrow'); // Arrow might be null now
+            const arrow = parentLi.querySelector('.submenu-arrow'); 
 
             if (!submenu) return;
 
+            // This single click handler now manages both the 'click-to-toggle' (span) and 'click-to-navigate' (a)
             toggle.addEventListener('click', (e) => {
                 
-                // If it's an <a> tag and the submenu is NOT currently open, prevent default
-                if (toggle.tagName === 'A' && !submenu.classList.contains('hidden')) {
-                    // Second click on the A tag navigates
-                    return; 
-                }
+                // If it's an <a> tag and the submenu is NOT currently open, allow navigation on the second click
+                // But, we want the first click to open it, so we prevent default on the first open
                 
-                // For both <span> and the first click on an <a> tag, prevent navigation/default action
-                e.preventDefault(); 
-                
-                // Toggle visibility of the submenu
-                submenu.classList.toggle('hidden');
-                
-                // Toggle arrow rotation ONLY if the arrow exists
-                if (arrow) {
-                    arrow.classList.toggle('rotate');
-                }
-
-                // Close other open submenus
-                document.querySelectorAll('.has-submenu').forEach(otherLi => {
-                    if (otherLi !== parentLi) {
-                        otherLi.querySelector('.submenu').classList.add('hidden');
-                        const otherArrow = otherLi.querySelector('.submenu-arrow');
-                        if (otherArrow) {
-                            otherArrow.classList.remove('rotate');
-                        }
+                // If we are dealing with a non-link span OR the submenu is closed, or it's an arrow click, we TOGGLE
+                if (toggle.tagName === 'SPAN' || submenu.classList.contains('hidden') || e.target.classList.contains('submenu-arrow') || e.target.closest('.submenu-arrow')) {
+                    
+                    e.preventDefault(); 
+                    
+                    // Toggle visibility of the submenu
+                    submenu.classList.toggle('hidden');
+                    
+                    // Toggle arrow rotation ONLY if the arrow exists
+                    if (arrow) {
+                        arrow.classList.toggle('rotate');
                     }
-                });
+
+                    // Close other open submenus
+                    document.querySelectorAll('.has-submenu').forEach(otherLi => {
+                        if (otherLi !== parentLi) {
+                            const otherSubmenu = otherLi.querySelector('.submenu');
+                            if (!otherSubmenu.classList.contains('hidden')) {
+                                otherSubmenu.classList.add('hidden');
+                                const otherArrow = otherLi.querySelector('.submenu-arrow');
+                                if (otherArrow) {
+                                    otherArrow.classList.remove('rotate');
+                                }
+                            }
+                        }
+                    });
+                }
+                // If it's an <a> and the submenu is already visible, the default action (navigation) will proceed.
             });
             
-            // For the Creation Showcase, keep the arrow clickable to only toggle the menu
-            if (toggle.tagName === 'A' && arrow) {
-                arrow.addEventListener('click', (e) => {
-                    e.preventDefault(); // Stop navigation when clicking arrow
-                    e.stopPropagation(); // Stop event from propagating up to the link
-                    submenu.classList.toggle('hidden');
-                    arrow.classList.toggle('rotate');
+            // Handle non-clickable sub-links (spans) inside the submenu
+            submenu.querySelectorAll('li > span').forEach(subSpan => {
+                subSpan.addEventListener('click', (e) => {
+                    e.preventDefault(); // Explicitly prevent any default action on these static links
                 });
-            }
+            });
+
         });
     }
 
