@@ -3,61 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Complimentary Creations | InaraWell</title>
+    <title>InaraWell - Home</title>
     <link rel="icon" type="image/jpeg" href="https://i.ibb.co/bMgw0WCF/Smart-Select-20251001-110956-Gallery.jpg">
+    <link rel="stylesheet" href="assets/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    
-    <link rel="stylesheet" href="assets/main.css"> 
+</head>
+<body>
 
+    <div id="nav-overlay-container"></div>
+    
+ <main id="page-content">
+    
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complimentary Creations | InaraWell</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            --primary: #1C2E46; 
-            --secondary: #E3EEF7; 
-            --light-bg: #F7F7F0;
-            --accent-blue: #ADD8E6;
+            --primary: #1C2E46; /* Dark Blue */
+            --secondary: #E3EEF7; /* Light Blue/Off-White */
+            --light-bg: #F7F7F0; /* Used for gradient-light */
+            --accent-blue: #ADD8E6; /* Used for gradient-blue */
             --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
-        /* ULTIMATE FIX: Applying Flexbox directly to the body for centering */
+
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #f9f9f9;
             color: var(--primary);
             line-height: 1.6;
-            
-            /* Core Flexbox properties for centering the entire page content */
-            display: flex;
-            flex-direction: column; /* Stacks the header/main/footer vertically */
-            align-items: center; /* **KEY FIX**: Centers ALL immediate children (nav, main, footer) horizontally */
+            /* **FIX**: KEEPING THE WORKING FLEXBOX LAYOUT */
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
-        
-        /* Removing margin auto from the container, as the body now handles centering */
+
         .container {
             max-width: 1200px;
-            width: 100%; /* Ensure it spans full width inside the body's centering context */
-            margin: 0; /* Remove margin auto */
+            margin: 0 auto;
             padding: 0 20px;
+            /* KEEPING THE WORKING FLEX-GROW */
+            flex-grow: 1; 
         }
-        
-        /* Header Styles */
+
+        /* Complimentary Header Styles (Derived from original .section-banner and .premium-banner) */
         .section-banner {
             background: linear-gradient(135deg, var(--light-bg) 0%, var(--secondary) 100%);
             text-align: center;
-            padding: 60px 20px;
+            padding: 60px 20px; /* Reduced padding slightly from Premium banner's 80px */
             margin-bottom: 50px;
             position: relative;
             overflow: hidden;
             border-radius: 0 0 25px 25px;
-            width: 100%;
+            /* Removed premium-banner box-shadow, kept general structure */
         }
-        
+
         .section-banner::before {
             content: '';
             position: absolute;
@@ -65,19 +74,21 @@
             left: 0;
             width: 100%;
             height: 100%;
+            /* Reverting to Complimentary banner image */
             background: url('https://i.ibb.co/60tdbZxM/1754230377299.jpg') center/cover;
             opacity: 0.03;
             z-index: 0;
         }
-        
+
         .section-banner h1 {
-            font-size: 3.2rem;
+            font-size: 3.2rem; /* Reverting to Complimentary h1 size */
             position: relative;
             color: var(--primary);
             font-weight: 700;
             letter-spacing: 1px;
+            margin-bottom: 0; /* Removed premium margin-bottom */
         }
-        
+
         .section-banner h1::after {
             content: '';
             position: absolute;
@@ -85,81 +96,80 @@
             left: 50%;
             transform: translateX(-50%);
             width: 100px;
-            height: 4px;
-            background: var(--accent-blue);
+            height: 4px; /* Reverting to Complimentary h1::after height */
+            background: var(--accent-blue); /* Reverting to Complimentary accent color */
             border-radius: 4px;
         }
         
-        /* PRODUCT GRID WRAPPER: Now only needs to manage its max width, centering is handled by the body */
-        .product-grid-wrapper {
-            width: max-content; 
-            /* margin: 0 auto !important; is no longer needed here */
-            margin: 0;
-        }
-        
-        /* Products Grid */
+        /* Removed .section-banner p styles as Complimentary banner didn't have a paragraph */
+
+        /* Complimentary Products Grid (Derived from .premium-grid, but with original styles) */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             margin-bottom: 60px;
-            max-width: 100%; 
         }
-        
+
         .product-card {
             background: white;
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
             transition: var(--transition);
+            /* Removed premium border-top and position relative */
         }
         
+        /* Removed .premium-image::after styles */
+
         .product-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12); /* Reverting to Complimentary hover shadow */
         }
-        
+
         .product-image {
             height: 220px;
             overflow: hidden;
+            /* Removed premium position relative */
         }
-        
+
         .product-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: var(--transition);
         }
-        
+
         .product-card:hover .product-image img {
             transform: scale(1.05);
         }
-        
+
         .product-content {
             padding: 25px;
         }
-        
+
         .product-content h3 {
-            font-size: 1.3rem;
+            font-size: 1.3rem; /* Reverting to Complimentary h3 size */
             margin-bottom: 15px;
             color: var(--primary);
+            font-weight: 500; /* Setting default weight, as it was missing */
         }
-        
+
         .product-content p {
             margin-bottom: 20px;
             color: var(--primary);
             opacity: 0.9;
             font-size: 0.95rem;
         }
-        
-        /* Button Styles */
+
+        /* Complimentary Button Styles (Derived from .premium-coming-soon, but with original styles) */
         .coming-soon-btn {
             display: inline-block;
-            background: var(--secondary);
-            color: var(--primary);
+            background: var(--secondary); /* Reverting to Complimentary button background */
+            color: var(--primary); /* Reverting to Complimentary button text color */
             padding: 12px 25px;
             border-radius: 50px;
-            font-weight: 600;
+            font-weight: 600; /* Reverting to Complimentary button font weight */
             text-decoration: none;
             cursor: default;
             pointer-events: none;
@@ -168,19 +178,17 @@
             text-align: center;
             transition: var(--transition);
             font-size: 0.95rem;
+            /* Removed premium letter-spacing */
         }
-        
+
         /* Responsive Styles */
         @media (max-width: 768px) {
             .section-banner h1 {
                 font-size: 2.5rem;
             }
             
-            .product-grid-wrapper {
-                width: 100%;
-                margin: 0; 
-            }
-            
+            /* Removed premium-banner p responsive styles */
+
             .products-grid {
                 grid-template-columns: 1fr;
             }
@@ -188,96 +196,92 @@
     </style>
 </head>
 <body>
-    
-    <div id="nav-overlay-container"></div>
-    
-    <main id="page-content"> 
-        
-        <header class="section-banner">
-            <div class="container">
-                <h1>Complimentary Creations</h1>
-            </div>
-        </header>
-        
+    <header class="section-banner">
         <div class="container">
-            <div class="product-grid-wrapper">
-                <div class="products-grid">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="https://i.ibb.co/60tdbZxM/1754230377299.jpg" alt="Daily Affirmation Deck">
-                        </div>
-                        <div class="product-content">
-                            <h3>Daily Affirmation Deck (Digital Cards)</h3>
-                            <p>Start each day with a boost of positivity. This beautifully designed digital deck will offer a fresh affirmation daily to inspire confidence, gratitude, and resilience, accessible right from your device.</p>
-                            <button class="coming-soon-btn">Coming Soon</button>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="https://i.ibb.co/M58dkV6F/Picsart-25-08-03-15-18-35-182.jpg" alt="Guided Breathwork for Stress Release">
-                        </div>
-                        <div class="product-content">
-                            <h3>Guided Breathwork for Stress Release (Short Series)</h3>
-                            <p>Find calm in minutes with these powerful breathwork exercises. This concise audio series provides simple yet effective techniques to quickly reduce stress and promote relaxation whenever you need it most.</p>
-                            <button class="coming-soon-btn">Coming Soon</button>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="https://i.ibb.co/q3dVGYvL/Picsart-25-08-03-19-25-05-465.jpg" alt="Digital Detox Playbook Preview">
-                        </div>
-                        <div class="product-content">
-                            <h3>The Digital Detox Playbook Preview</h3>
-                            <p>Get a taste of reclaiming your focus and reconnecting with what truly matters. This introductory preview will offer a sneak peek into practical strategies for a healthier relationship with technology.</p>
-                            <button class="coming-soon-btn">Coming Soon</button>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="https://i.ibb.co/qFsTyPGT/Picsart-25-08-03-19-33-17-750.jpg" alt="Self-Care Quick-Start Guide">
-                        </div>
-                        <div class="product-content">
-                            <h3>Self-Care Quick-Start Guide</h3>
-                            <p>Kickstart your well-being journey with essential tips and simple practices. This guide provides actionable steps to integrate crucial self-care routines into your busy schedule, promoting balance and peace.</p>
-                            <button class="coming-soon-btn">Coming Soon</button>
-                        </div>
-                    </div>
+            <h1>Complimentary Creations</h1>
+            </div>
+    </header>
+
+    <main class="container">
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://i.ibb.co/60tdbZxM/1754230377299.jpg" alt="Daily Affirmation Deck">
+                </div>
+                <div class="product-content">
+                    <h3>Daily Affirmation Deck (Digital Cards)</h3>
+                    <p>Start each day with a boost of positivity. This beautifully designed digital deck will offer a fresh affirmation daily to inspire confidence, gratitude, and resilience, accessible right from your device.</p>
+                    <button class="coming-soon-btn">Coming Soon</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://i.ibb.co/M58dkV6F/Picsart-25-08-03-15-18-35-182.jpg" alt="Guided Breathwork for Stress Release">
+                </div>
+                <div class="product-content">
+                    <h3>Guided Breathwork for Stress Release (Short Series)</h3>
+                    <p>Find calm in minutes with these powerful breathwork exercises. This concise audio series provides simple yet effective techniques to quickly reduce stress and promote relaxation whenever you need it most.</p>
+                    <button class="coming-soon-btn">Coming Soon</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://i.ibb.co/q3dVGYvL/Picsart-25-08-03-19-25-05-465.jpg" alt="Digital Detox Playbook Preview">
+                </div>
+                <div class="product-content">
+                    <h3>The Digital Detox Playbook Preview</h3>
+                    <p>Get a taste of reclaiming your focus and reconnecting with what truly matters. This introductory preview will offer a sneak peek into practical strategies for a healthier relationship with technology.</p>
+                    <button class="coming-soon-btn">Coming Soon</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://i.ibb.co/qFsTyPGT/Picsart-25-08-03-19-33-17-750.jpg" alt="Self-Care Quick-Start Guide">
+                </div>
+                <div class="product-content">
+                    <h3>Self-Care Quick-Start Guide</h3>
+                    <p>Kickstart your well-being journey with essential tips and simple practices. This guide provides actionable steps to integrate crucial self-care routines into your busy schedule, promoting balance and peace.</p>
+                    <button class="coming-soon-btn">Coming Soon</button>
                 </div>
             </div>
         </div>
     </main>
-    
-    <div id="footer-container"></div>
-    
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Simple animation for cards
-            const cards = document.querySelectorAll('.product-card');
-            
+            // Staggered animation for complimentary cards
+            const cards = document.querySelectorAll('.product-card'); // Changed selector to .product-card
+
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry, index) => {
                     if (entry.isIntersecting) {
                         setTimeout(() => {
                             entry.target.style.opacity = '1';
                             entry.target.style.transform = 'translateY(0)';
-                        }, 100 * index);
+                        }, 100 * index); // Reverting to original animation delay
                     }
                 });
             }, { threshold: 0.1 });
-            
+
             cards.forEach(card => {
                 card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
-                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                card.style.transform = 'translateY(20px)'; // Reverting to original transform value
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease'; // Reverting to original transition
                 observer.observe(card);
             });
         });
     </script>
-    
+</body>
+</html>
+
+</main>
+
+    <div id="footer-container"></div>
+
     <script src="assets/component-loader.js"></script>
 
 </body>
-</html>
+    </html>
