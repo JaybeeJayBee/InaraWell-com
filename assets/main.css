@@ -229,7 +229,7 @@ body {
 /* --- Professional Navigation Info Styling --- */
 .overlay-info {
     position: absolute;
-    bottom: 50px;
+    bottom: 20px; /* SHIFTED DOWN FOR MORE MENU SPACE */
     left: 0;
     width: 100%;
     text-align: center;
