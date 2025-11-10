@@ -11,8 +11,8 @@
 
     <style>
         :root {
-            --primary: #1C2E46; 
-            --secondary: #E3EEF7; 
+            --primary: #1C2E46; /* Dark Blue */
+            --secondary: #E3EEF7; /* Light Blue/Off-White */
             --light-bg: #F7F7F0;
             --accent-blue: #ADD8E6;
             --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
@@ -32,36 +32,27 @@
         }
         
         .container {
-            /* Standard container max-width and centering for inner content */
             max-width: 1200px;
             margin: 0 auto; 
             padding: 0 20px;
         }
         
-        /* Header Styles */
+        /* Header Styles - REDESIGNED BANNER */
         .section-banner {
-            background: linear-gradient(135deg, var(--light-bg) 0%, var(--secondary) 100%);
+            /* SIMPLIFIED BACKGROUND */
+            background: var(--secondary); /* Solid light background */
             text-align: center;
             padding: 60px 20px;
             margin-bottom: 50px;
             position: relative;
             overflow: hidden;
             border-radius: 0 0 25px 25px;
-            /* Ensure the banner takes full width */
             width: 100%;
+            /* Added shadow for depth */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); 
         }
         
-        .section-banner::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://i.ibb.co/60tdbZxM/1754230377299.jpg') center/cover;
-            opacity: 0.03;
-            z-index: 0;
-        }
+        /* REMOVED: .section-banner::before (the background image) */
         
         .section-banner h1 {
             font-size: 3.2rem;
@@ -79,7 +70,8 @@
             transform: translateX(-50%);
             width: 100px;
             height: 4px;
-            background: var(--accent-blue);
+            /* Use accent blue for a nice visual pop */
+            background: var(--accent-blue); 
             border-radius: 4px;
         }
         
