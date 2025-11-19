@@ -13,396 +13,458 @@
     <div id="nav-overlay-container"></div>
     
  <main id="page-content">
-    
     <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Creations Showcase | InaraWell</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Creations Showcase - Self-Help Agency</title>
+
+    <link rel="icon" type="image/webp" href="https://i.ibb.co/jP5gg2HT/IMG-20250819-143112-516.webp">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="assets/main.css">
+    
     <style>
         :root {
-            --primary: #1C2E46;
-            --secondary: #E3EEF7;
-            --light-bg: #F7F7F0;
-            --accent-blue: #ADD8E6;
-            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            /* Removed Footer variables */
+            --color-primary-dark: #1C2E46; /* Dark Blue */
+            --color-secondary-light: #E3EEF7; /* Light Blue/Off-White */
+            --color-accent-cream: #ffffff; /* Using White for text contrast on dark primary */
+            --color-text-dark: #333333;
         }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f9f9f9;
-            color: var(--primary);
-            line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            flex-grow: 1; 
-        }
-        
-        /* Header Styles */
-        .showcase-header {
-            text-align: center;
-            padding: 80px 0 60px;
-            background: linear-gradient(135deg, var(--light-bg) 0%, var(--secondary) 100%);
-            border-radius: 0 0 30px 30px;
-            margin-bottom: 60px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .showcase-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://i.ibb.co/jkZ7ySyc/Picsart-25-08-03-15-00-47-388.jpg') center/cover;
-            opacity: 0.03;
-            z-index: 0;
-        }
-        
-        .showcase-header h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            position: relative;
-            background: linear-gradient(to right, var(--primary), #3a5a80);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            font-weight: 700;
-        }
-        
-        .showcase-header p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto;
-            position: relative;
-            opacity: 0.9;
-        }
-        
-        /* Category Styles */
-        .category-section {
-            margin-bottom: 80px;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.8s forwards;
-        }
-        
-        .category-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        
-        .category-header h2 {
-            font-size: 2.2rem;
-            margin-bottom: 15px;
-            color: var(--primary);
-            position: relative;
-            display: inline-block;
-        }
-        
-        .category-header h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--accent-blue);
-            border-radius: 3px;
-        }
-        
-        .category-header p {
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto;
-            opacity: 0.8;
-        }
-        
-        /* Products Grid */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-        
-        .product-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            transition: var(--transition);
-        }
-        
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
-        }
-        
-        .product-image {
-            height: 250px;
-            overflow: hidden;
-        }
-        
-        .product-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-        
-        .product-card:hover .product-image img {
-            transform: scale(1.05);
-        }
-        
-        .product-content {
-            padding: 25px;
-        }
-        
-        .product-content h3 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-        
-        .product-content p {
-            margin-bottom: 20px;
-            color: var(--primary);
-            opacity: 0.9;
-        }
-        
-        /* Button Styles */
-        .coming-soon-btn {
-            display: inline-block;
-            background: var(--secondary);
-            color: var(--primary);
-            padding: 12px 25px;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            cursor: default;
-            pointer-events: none;
-            border: none;
-            width: 100%;
-            text-align: center;
-            transition: var(--transition);
-        }
-        
-        .view-more-btn {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 14px 35px;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: var(--transition);
-            text-align: center;
-            margin: 0 auto;
-            box-shadow: 0 5px 15px rgba(28, 46, 70, 0.2);
-        }
-        
-        .view-more-btn:hover {
-            background: #142538;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(28, 46, 70, 0.3);
-        }
-        
-        .btn-container {
-            text-align: center;
-            margin-top: 20px;
-        }
-        
-        /* Animations */
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* Category Animation Delays */
-        .featured-section {
-            animation-delay: 0.2s;
-        }
-        
-        .complimentary-section {
-            animation-delay: 0.4s;
-        }
-        
-        .premium-section {
-            animation-delay: 0.6s;
-        }
-        
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .showcase-header h1 {
-                font-size: 2.2rem;
-            }
-            
-            .showcase-header p {
-                font-size: 1rem;
-            }
-            
-            .category-header h2 {
-                font-size: 1.8rem;
-            }
-            
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        /* Removed Footer Styles */
     </style>
 </head>
 <body>
-    <header class="showcase-header">
-        <div class="container">
-            <h1>Our Creations Showcase</h1>
-            <p>Welcome to our digital sanctuary of transformation. Here you'll discover our carefully crafted self-help resources, each designed to illuminate your path to personal growth and well-being.</p>
-        </div>
-    </header>
-    
-    <main class="container">
-        <section class="category-section featured-section">
-            <div class="category-header">
-                <h2>Featured Creations</h2>
-            </div>
-            
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://i.ibb.co/jkZ7ySyc/Picsart-25-08-03-15-00-47-388.jpg" alt="The Clarity Compass Journal">
-                    </div>
-                    <div class="product-content">
-                        <h3>The Clarity Compass Journal</h3>
-                        <p>Uncover your true north with this interactive digital journal designed to illuminate your purpose and guide your daily actions. Our team is meticulously crafting prompts and exercises to help you navigate life's complexities with newfound clarity.</p>
-                        <button class="coming-soon-btn">Coming Soon</button>
-                    </div>
-                </div>
-                
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://i.ibb.co/nqCS432y/1754230065509.jpg" alt="Mindful Morning Mastery Audio Series">
-                    </div>
-                    <div class="product-content">
-                        <h3>Mindful Morning Mastery Audio Series</h3>
-                        <p>Transform your mornings and set a powerful tone for your day. This calming audio series will feature guided meditations, positive affirmations, and gentle breathwork exercises to cultivate a serene and focused start, even amidst the busiest schedules.</p>
-                        <button class="coming-soon-btn">Coming Soon</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section class="category-section complimentary-section">
-            <div class="category-header">
-                <h2>Complimentary Creations</h2>
-                <p>These valuable resources are designed to complement your journey of growth and well-being.</p>
-            </div>
-            
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://i.ibb.co/60tdbZxM/1754230377299.jpg" alt="Daily Affirmation Deck">
-                    </div>
-                    <div class="product-content">
-                        <h3>Daily Affirmation Deck (Digital Cards)</h3>
-                        <p>Start each day with a boost of positivity. This beautifully designed digital deck will offer a fresh affirmation daily to inspire confidence, gratitude, and resilience, accessible right from your device.</p>
-                        <button class="coming-soon-btn">Coming Soon</button>
-                    </div>
-                </div>
-                
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://i.ibb.co/JwHWDYrH/Picsart-25-08-03-15-45-14-891.jpg" alt="Guided Breathwork for Stress Release">
-                    </div>
-                    <div class="product-content">
-                        <h3>Guided Breathwork for Stress Release (Short Series)</h3>
-                        <p>Find calm in minutes with these powerful breathwork exercises. This concise audio series provides simple yet effective techniques to quickly reduce stress and promote relaxation whenever you need it most.</p>
-                        <button class="coming-soon-btn">Coming Soon</button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="btn-container">
-                <a href="https://www.inarawell.com/complimentary-creations" class="view-more-btn">View More Complimentary Creations</a>
-            </div>
-        </section>
-        
-        <section class="category-section premium-section">
-            <div class="category-header">
-                <h2>Premium Creations</h2>
-                <p>Dive deeper into transformative experiences with our meticulously developed premium offerings.</p>
-            </div>
-            
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://i.ibb.co/Cp0J1rZH/Picsart-25-08-03-15-25-02-586.jpg" alt="The Visionary's Blueprint Masterclass">
-                    </div>
-                    <div class="product-content">
-                        <h3>The Visionary's Blueprint Masterclass</h3>
-                        <p>Ready to manifest your biggest dreams? This immersive masterclass will walk you through a step-by-step process for defining, refining, and actively building the life you envision, complete with advanced tools and exclusive insights.</p>
-                        <button class="coming-soon-btn">Coming Soon</button>
-                    </div>
-                </div>
-                
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://i.ibb.co/Lz8F1wkF/Picsart-25-08-03-15-32-48-201.jpg" alt="Personalized Breakthrough Coaching Session">
-                    </div>
-                    <div class="product-content">
-                        <h3>Personalized Breakthrough Coaching Session (Discovery Call)</h3>
-                        <p>Unlock your full potential with a one-on-one session tailored specifically to your unique challenges and aspirations. This premium offering will provide personalized guidance and actionable strategies to help you overcome obstacles and achieve significant breakthroughs.</p>
-                        <button class="coming-soon-btn">Coming Soon</button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="btn-container">
-                <a href="https://www.inarawell.com/premium-creations" class="view-more-btn">View More Premium Creations</a>
-            </div>
-        </section>
-    </main>
 
+    <div id="nav-system-placeholder"></div>
+
+    <main id="page-content">
+        <div class="header-container creations-showcase-hero" style="background-color: var(--color-primary-dark);">
+            <img src="https://res.cloudinary.com/dqpvrgi9f/image/upload/v1763197856/Picsart_25-11-15_08-41-13-851_pzi36b.jpg" alt="Self-Help Agency Header" class="header-image">
+            <h1 style="color: var(--color-secondary-light);">Our Creations Showcase</h1>
+            <p class="header-tagline" style="color: var(--color-secondary-light);">Welcome to our creations showcase of transformation. Here you'll discover our carefully crafted self-help resources, each designed to illuminate your path to personal growth and well-being.</p>
+            <div class="bubbles">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+
+        <div class="main-content-wrapper">
+            
+            <div class="recipe-categories-wrapper">
+                
+                <section class="recipe-carousel-section" id="section-featured">
+                    <h2 class="section-title-hub">✨ Featured Creations</h2>
+                    <div class="horizontal-scroll-container">
+                        <div class="product-card">
+                            <div class="product-card-image"><img src="https://res.cloudinary.com/dqpvrgi9f/image/upload/v1763545133/Picsart_25-11-19_10-32-48-134_jet89v.jpg" alt="Featured Guided Meditation"></div>
+                            <div class="product-card-content">
+                                <h3>The Clarity Blueprint</h3>
+                                <p>A step-by-step digital roadmap to defining your purpose and setting achievable life goals.</p>
+                                <a href="#" onclick="return false;" class="coming-soon-button">Coming Soon</a>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image"><img src="https://res.cloudinary.com/dqpvrgi9f/image/upload/v1763545133/Picsart_25-11-19_10-32-48-134_jet89v.jpg" alt="Featured Goal Setting Kit"></div>
+                            <div class="product-card-content">
+                                <h3>Resilience Toolkit</h3>
+                                <p>Interactive workbook and video lessons for building emotional strength and coping mechanisms.</p>
+                                <a href="#" onclick="return false;" class="coming-soon-button">Coming Soon</a>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image"><img src="https://res.cloudinary.com/dqpvrgi9f/image/upload/v1763545133/Picsart_25-11-19_10-32-48-134_jet89v.jpg" alt="Featured Emotional Intelligence Guide"></div>
+                            <div class="product-card-content">
+                                <h3>Mindful Mornings Journal</h3>
+                                <p>50 unique prompts designed to cultivate gratitude and positive affirmation rituals.</p>
+                                <a href="#" onclick="return false;" class="coming-soon-button">Coming Soon</a>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image"><img src="https://res.cloudinary.com/dqpvrgi9f/image/upload/v1763545133/Picsart_25-11-19_10-32-48-134_jet89v.jpg" alt="Featured Stress Relief Module"></div>
+                            <div class="product-card-content">
+                                <h3>Instant Mood Shift Audios</h3>
+                                <p>Quick 5-minute audio exercises to interrupt negative thought patterns and reset focus.</p>
+                                <a href="#" onclick="return false;" class="coming-soon-button">Coming Soon</a>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image"><img src="https://res.cloudinary.com/dqpvrgi9f/image/upload/v1763545133/Picsart_25-11-19_10-32-48-134_jet89v.jpg" alt="Featured Relationship Mastery"></div>
+                            <div class="product-card-content">
+                                <h3>The Procrastination Destroyer</h3>
+                                <p>A powerful time management framework to overcome resistance and maximize productivity.</p>
+                                <a href="#" onclick="return false;" class="coming-soon-button">Coming Soon</a>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image"><img src="https://res.cloudinary.com/dqpvrgi9f/image/upload/v1763545133/Picsart_25-11-19_10-32-48-134_jet89v.jpg" alt="Featured Core Values Workshop"></div>
+                            <div class="product-card-content">
+                                <h3>Financial Freedom Mindset</h3>
+                                <p>Downloadable guide and spreadsheets for changing your relationship with money and wealth.</p>
+                                <a href="#" onclick="return false;" class="coming-soon-button">Coming Soon</a>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image"><img src="https://res.cloudinary.com/dqpvrgi9f/image/upload/v1763545133/Picsart_25-11-19_10-32-48-134_jet89v.jpg" alt="Featured Sleep Optimization"></div>
+                            <div class="product-card-content">
+                                <h3>Inner Critic Silence Protocol</h3>
+                                <p>Guided cognitive exercises to identify, challenge, and quiet self-sabotaging inner dialogue.</p>
+                                <a href="#" onclick="return false;" class="coming-soon-button">Coming Soon</a>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image"><img src="https://res.cloudinary.com/dqpvrgi9f/image/upload/v1763545133/Picsart_25-11-19_10-32-48-134_jet89v.jpg" alt="Featured Habit Tracker Bundle"></div>
+                            <div class="product-card-content">
+                                <h3>Boundary Setting Masterclass</h3>
+                                <p>Video series on asserting your needs respectfully and protecting your personal energy.</p>
+                                <a href="#" onclick="return false;" class="coming-soon-button">Coming Soon</a>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image"><img src="https://res.cloudinary.com/dqpvrgi9f/image/upload/v1763545133/Picsart_25-11-19_10-32-48-134_jet89v.jpg" alt="Featured Confidence Booster"></div>
+                            <div class="product-card-content">
+                                <h3>The Deep Work 7-Day Challenge</h3>
+                                <p>Structured daily modules designed to increase focus and flow state in complex tasks.</p>
+                                <a href="#" onclick="return false;" class="coming-soon-button">Coming Soon</a>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image"><img src="https://res.cloudinary.com/dqpvrgi9f/image/upload/v1763545133/Picsart_25-11-19_10-32-48-134_jet89v.jpg" alt="Featured Life Balance Assessment"></div>
+                            <div class="product-card-content">
+                                <h3>Digital Detox Guide</h3>
+                                <p>A practical plan and tracker to reduce screen time and improve mental clarity and presence.</p>
+                                <a href="#" onclick="return false;" class="coming-soon-button">Coming Soon</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-indicator" data-target="section-featured"></div>
+                </section>
+                
+                <section class="recipe-carousel-section" id="section-premium">
+                    <h2 class="section-title-hub">💎 Premium Creations</h2>
+                    <div class="horizontal-scroll-container">
+                        <div class="product-card">
+                            <div class="product-card-image"><img src="https://res.cloudinary.com/dqpvrgi9f/image/upload/v1763545133/Picsart_25-11-19_10-32-48-134_jet89v.jpg" alt="Premium Emotional Mastery Course"></div>
+                            <div class="product-card-content">
+                                <h3>Shadow Work Deep Dive</h3>
+                                <p>Advanced exercises for integrating unconscious aspects of the self for holistic healing.</p>
+                                <a href="#" onclick="return false;" class="coming-soon-button">Coming Soon</a>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image"><img src="https://res.cloudinary.com/dqpvrgi9f/image/upload/v1763545133/Picsart_25-11-19_10-32-48-134_jet89v.jpg" alt="Premium Inner Peace Retreat"></div>
+                            <div class="product-card-content">
+                                <h3>The Abundance Activation</h3>
+                                <p>A 30-day program focusing on mindset shifts to attract prosperity in all areas of life.</p>
+                                <a href="#" onclick="return false;" class="coming-soon-button">Coming Soon</a>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image"><img src="https://res.cloudinary.com/dqpvrgi9f/image/upload/v1763545133/Picsart_25-11-19_10-32-48-134_jet89v.jpg" alt="Premium High-Performance Habits"></div>
+                            <div class="product-card-content">
+                                <h3>Sovereign Self Workshop</h3>
+                                <p>A complete video course detailing techniques for maximum personal empowerment and leadership.</p>
+                                <a href="#" onclick="return false;" class="coming-soon-button">Coming Soon</a>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image"><img src="https://res.cloudinary.com/dqpvrgi9f/image/upload/v1763545133/Picsart_25-11-19_10-32-48-134_jet89v.jpg" alt="Premium Trauma Healing Protocol"></div>
+                            <div class="product-card-content">
+                                <h3>Generational Pattern Breaker</h3>
+                                <p>Workbook and exercises to identify and overcome inherited emotional and behavioral patterns.</p>
+                                <a href="#" onclick="return false;" class="coming-soon-button">Coming Soon</a>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image"><img src="https://res.cloudinary.com/dqpvrgi9f/image/upload/v1763545133/Picsart_25-11-19_10-32-48-134_jet89v.jpg" alt="Premium Authentic Communication"></div>
+                            <div class="product-card-content">
+                                <h3>Cognitive Reframing Suite</h3>
+                                <p>Advanced digital tools for restructuring negative core beliefs and challenging distortions.</p>
+                                <a href="#" onclick="return false;" class="coming-soon-button">Coming Soon</a>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image"><img src="https://res.cloudinary.com/dqpvrgi9f/image/upload/v1763545133/Picsart_25-11-19_10-32-48-134_jet89v.jpg" alt="Premium Energy Management System"></div>
+                            <div class="product-card-content">
+                                <h3>The Hero's Journey Manual</h3>
+                                <p>A comprehensive 12-module self-paced course on leveraging personal narrative for change.</p>
+                                <a href="#" onclick="return false;" class="coming-soon-button">Coming Soon</a>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image"><img src="https://res.cloudinary.com/dqpvrgi9f/image/upload/v1763545133/Picsart_25-11-19_10-32-48-134_jet89v.jpg" alt="Premium Time Optimization Strategy"></div>
+                            <div class="product-card-content">
+                                <h3>Signature Purpose Discovery</h3>
+                                <p>An intensive, downloadable workshop designed to reveal your deepest calling and life mission.</p>
+                                <a href="#" onclick="return false;" class="coming-soon-button">Coming Soon</a>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image"><img src="https://res.cloudinary.com/dqpvrgi9f/image/upload/v1763545133/Picsart_25-11-19_10-32-48-134_jet89v.jpg" alt="Premium Self-Love Program"></div>
+                            <div class="product-card-content">
+                                <h3>Conscious Leadership E-Book</h3>
+                                <p>In-depth guide on leading ethically, empathetically, and effectively in professional and personal life.</p>
+                                <a href="#" onclick="return false;" class="coming-soon-button">Coming Soon</a>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image"><img src="https://res.cloudinary.com/dqpvrgi9f/image/upload/v1763545133/Picsart_25-11-19_10-32-48-134_jet89v.jpg" alt="Premium Wellness Planner"></div>
+                            <div class="product-card-content">
+                                <h3>Holistic Wellness Blueprint</h3>
+                                <p>A system to balance physical health, mental clarity, and spiritual fulfillment for optimal living.</p>
+                                <a href="#" onclick="return false;" class="coming-soon-button">Coming Soon</a>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image"><img src="https://res.cloudinary.com/dqpvrgi9f/image/upload/v1763545133/Picsart_25-11-19_10-32-48-134_jet89v.jpg" alt="Premium Success Visualization"></div>
+                            <div class="product-card-content">
+                                <h3>The Mind-Body Connection Kit</h3>
+                                <p>Exercises and guides focused on leveraging physical sensation to process and release emotional blockages.</p>
+                                <a href="#" onclick="return false;" class="coming-soon-button">Coming Soon</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-indicator" data-target="section-premium"></div>
+                </section>
+                
+                <section class="recipe-carousel-section" id="section-complimentary">
+                    <h2 class="section-title-hub">🎁 Complimentary Creations</h2>
+                    <div class="horizontal-scroll-container">
+                        <div class="product-card">
+                            <div class="product-card-image"><img src="https://res.cloudinary.com/dqpvrgi9f/image/upload/v1763545133/Picsart_25-11-19_10-32-48-134_jet89v.jpg" alt="Free Starter Meditation"></div>
+                            <div class="product-card-content">
+                                <h3>Starter Daily Gratitude List</h3>
+                                <p>A simple one-page printable template to kickstart your daily appreciation practice.</p>
+                                <a href="#" onclick="return false;" class="coming-soon-button">Coming Soon</a>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image"><img src="https://res.cloudinary.com/dqpvrgi9f/image/upload/v1763545133/Picsart_25-11-19_10-32-48-134_jet89v.jpg" alt="Free Goal Tracker PDF"></div>
+                            <div class="product-card-content">
+                                <h3>Morning Routine Checklist</h3>
+                                <p>A customizable PDF checklist to build an intentional, energy-boosting start to your day.</p>
+                                <a href="#" onclick="return false;" class="coming-soon-button">Coming Soon</a>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image"><img src="https://res.cloudinary.com/dqpvrgi9f/image/upload/v1763545133/Picsart_25-11-19_10-32-48-134_jet89v.jpg" alt="Free Stress Assessment"></div>
+                            <div class="product-card-content">
+                                <h3>5-Minute De-Stress Audio</h3>
+                                <p>A short, immediate relaxation exercise to use during moments of sudden tension or anxiety.</p>
+                                <a href="#" onclick="return false;" class="coming-soon-button">Coming Soon</a>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image"><img src="https://res.cloudinary.com/dqpvrgi9f/image/upload/v1763545133/Picsart_25-11-19_10-32-48-134_jet89v.jpg" alt="Free Energy Audit"></div>
+                            <div class="product-card-content">
+                                <h3>Negative Talk Buster Guide</h3>
+                                <p>A one-page guide detailing 3 effective techniques to immediately halt self-critical dialogue.</p>
+                                <a href="#" onclick="return false;" class="coming-soon-button">Coming Soon</a>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image"><img src="https://res.cloudinary.com/dqpvrgi9f/image/upload/v1763545133/Picsart_25-11-19_10-32-48-134_jet89v.jpg" alt="Free Communication Tips"></div>
+                            <div class="product-card-content">
+                                <h3>Affirmation Wallpaper Pack</h3>
+                                <p>Digital wallpapers for phone and desktop featuring powerful, positive affirmations for subconscious support.</p>
+                                <a href="#" onclick="return false;" class="coming-soon-button">Coming Soon</a>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image"><img src="https://res.cloudinary.com/dqpvrgi9f/image/upload/v1763545133/Picsart_25-11-19_10-32-48-134_jet89v.jpg" alt="Free Journal Prompts"></div>
+                            <div class="product-card-content">
+                                <h3>Introduction to Stoicism E-Guide</h3>
+                                <p>A brief introductory e-guide on ancient philosophy applied to modern emotional stability.</p>
+                                <a href="#" onclick="return false;" class="coming-soon-button">Coming Soon</a>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image"><img src="https://res.cloudinary.com/dqpvrgi9f/image/upload/v1763545133/Picsart_25-11-19_10-32-48-134_jet89v.jpg" alt="Free Sleep Tips PDF"></div>
+                            <div class="product-card-content">
+                                <h3>The Essential Self-Care List</h3>
+                                <p>A categorized list of simple self-care activities for physical, mental, and emotional needs.</p>
+                                <a href="#" onclick="return false;" class="coming-soon-button">Coming Soon</a>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image"><img src="https://res.cloudinary.com/dqpvrgi9f/image/upload/v1763545133/Picsart_25-11-19_10-32-48-134_jet89v.jpg" alt="Free Habit Starter Kit"></div>
+                            <div class="product-card-content">
+                                <h3>Weekly Focus Planner Template</h3>
+                                <p>A printable template to prioritize the top three goals for the coming week.</p>
+                                <a href="#" onclick="return false;" class="coming-soon-button">Coming Soon</a>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image"><img src="https://res.cloudinary.com/dqpvrgi9f/image/upload/v1763545133/Picsart_25-11-19_10-32-48-134_jet89v.jpg" alt="Free Productivity Hacks"></div>
+                            <div class="product-card-content">
+                                <h3>Digital Boundaries Quick Guide</h3>
+                                <p>Tips for setting limits with social media and digital notifications to reclaim mental space.</p>
+                                <a href="#" onclick="return false;" class="coming-soon-button">Coming Soon</a>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image"><img src="https://res.cloudinary.com/dqpvrgi9f/image/upload/v1763545133/Picsart_25-11-19_10-32-48-134_jet89v.jpg" alt="Free Inspiration Gallery"></div>
+                            <div class="product-card-content">
+                                <h3>Visualization Power Exercise</h3>
+                                <p>A two-minute audio track to help you rapidly visualize and manifest positive outcomes.</p>
+                                <a href="#" onclick="return false;" class="coming-soon-button">Coming Soon</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-indicator" data-target="section-complimentary"></div>
+                </section>
+
+                <section class="recipe-carousel-section" id="section-extra-value">
+                    <h2 class="section-title-hub">➕ Extra Value Creations</h2>
+                    <div class="horizontal-scroll-container">
+                        <div class="product-card">
+                            <div class="product-card-image"><img src="https://res.cloudinary.com/dqpvrgi9f/image/upload/v1763545133/Picsart_25-11-19_10-32-48-134_jet89v.jpg" alt="Value Focus Booster"></div>
+                            <div class="product-card-content">
+                                <h3>Monthly Reflection Workbook</h3>
+                                <p>A printable PDF workbook for deep monthly planning and honest self-assessment.</p>
+                                <a href="#" onclick="return false;" class="coming-soon-button">Coming Soon</a>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image"><img src="https://res.cloudinary.com/dqpvrgi9f/image/upload/v1763545133/Picsart_25-11-19_10-32-48-134_jet89v.jpg" alt="Value Habit Stacking Guide"></div>
+                            <div class="product-card-content">
+                                <h3>Advanced Manifestation Scripts</h3>
+                                <p>Ready-to-use journaling scripts focused on accelerating the manifestation process.</p>
+                                <a href="#" onclick="return false;" class="coming-soon-button">Coming Soon</a>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image"><img src="https://res.cloudinary.com/dqpvrgi9f/image/upload/v1763545133/Picsart_25-11-19_10-32-48-134_jet89v.jpg" alt="Value Energy Clearing Protocol"></div>
+                            <div class="product-card-content">
+                                <h3>Chakra Balancing Frequencies</h3>
+                                <p>A 7-track audio bundle using binaural beats for energy alignment and deep meditation.</p>
+                                <a href="#" onclick="return false;" class="coming-soon-button">Coming Soon</a>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image"><img src="https://res.cloudinary.com/dqpvrgi9f/image/upload/v1763545133/Picsart_25-11-19_10-32-48-134_jet89v.jpg" alt="Value Shadow Integration Guide"></div>
+                            <div class="product-card-content">
+                                <h3>Limiting Belief Finder Workbook</h3>
+                                <p>A systematic process for uncovering the root causes of self-limiting thoughts and fears.</p>
+                                <a href="#" onclick="return false;" class="coming-soon-button">Coming Soon</a>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image"><img src="https://res.cloudinary.com/dqpvrgi9f/image/upload/v1763545133/Picsart_25-11-19_10-32-48-134_jet89v.jpg" alt="Value Digital Wellness Bundle"></div>
+                            <div class="product-card-content">
+                                <h3>The Relationship Audit Templates</h3>
+                                <p>Worksheets for evaluating and improving communication and boundaries in close relationships.</p>
+                                <a href="#" onclick="return false;" class="coming-soon-button">Coming Soon</a>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image"><img src="https://res.cloudinary.com/dqpvrgi9f/image/upload/v1763545133/Picsart_25-11-19_10-32-48-134_jet89v.jpg" alt="Value Daily Planning System"></div>
+                            <div class="product-card-content">
+                                <h3>Spiritual Resilience Daily Guide</h3>
+                                <p>A collection of short readings and practices to anchor your spirit during challenging times.</p>
+                                <a href="#" onclick="return false;" class="coming-soon-button">Coming Soon</a>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image"><img src="https://res.cloudinary.com/dqpvrgi9f/image/upload/v1763545133/Picsart_25-11-19_10-32-48-134_jet89v.jpg" alt="Value Stress Management Kit"></div>
+                            <div class="product-card-content">
+                                <h3>The Imposter Syndrome Defeater</h3>
+                                <p>Targeted exercises and reflections designed to eliminate feelings of inadequacy and self-doubt.</p>
+                                <a href="#" onclick="return false;" class="coming-soon-button">Coming Soon</a>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image"><img src="https://res.cloudinary.com/dqpvrgi9f/image/upload/v1763545133/Picsart_25-11-19_10-32-48-134_jet89v.jpg" alt="Value Mindful Eating Manual"></div>
+                            <div class="product-card-content">
+                                <h3>The Ultimate Visualization Library</h3>
+                                <p>A collection of extended audio visualizations for success, healing, and deep relaxation.</p>
+                                <a href="#" onclick="return false;" class="coming-soon-button">Coming Soon</a>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image"><img src="https://res.cloudinary.com/dqpvrgi9f/image/upload/v1763545133/Picsart_25-11-19_10-32-48-134_jet89v.jpg" alt="Value Trauma Informed Practices"></div>
+                            <div class="product-card-content">
+                                <h3>The Productivity Flow State Guide</h3>
+                                <p>Methods and environmental tips to easily enter and maintain periods of high concentration.</p>
+                                <a href="#" onclick="return false;" class="coming-soon-button">Coming Soon</a>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image"><img src="https://res.cloudinary.com/dqpvrgi9f/image/upload/v1763545133/Picsart_25-11-19_10-32-48-134_jet89v.jpg" alt="Value Confidence Builder"></div>
+                            <div class="product-card-content">
+                                <h3>Personal Retreat Planning System</h3>
+                                <p>A detailed framework for designing and executing your own DIY day or weekend personal development retreat.</p>
+                                <a href="#" onclick="return false;" class="coming-soon-button">Coming Soon</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-indicator" data-target="section-extra-value"></div>
+                </section>
+            </div>
+            </div>
+        </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="scripts/component-injector.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Simple animation trigger
-            const sections = document.querySelectorAll('.category-section');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, { threshold: 0.1 });
-            
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.recipe-carousel-section');
+
             sections.forEach(section => {
-                observer.observe(section);
+                const scrollContainer = section.querySelector('.horizontal-scroll-container');
+                const indicatorContainer = section.querySelector('.carousel-indicator');
+                const cards = scrollContainer.querySelectorAll('.product-card');
+                const sectionId = section.id;
+                
+                if (!indicatorContainer) return;
+
+                // 1. Initialize Dots
+                cards.forEach((_, index) => {
+                    const dot = document.createElement('span');
+                    dot.classList.add('indicator-dot');
+                    if (index === 0) {
+                        dot.classList.add('active'); // First dot is active by default
+                    }
+                    indicatorContainer.appendChild(dot);
+                });
+
+                const dots = indicatorContainer.querySelectorAll('.indicator-dot');
+
+                // 2. Observer to track which card is currently visible
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        // Check for at least 60% intersection to register the card as "active"
+                        if (entry.isIntersecting && entry.intersectionRatio >= 0.6) { 
+                            const activeIndex = Array.from(cards).indexOf(entry.target);
+                            
+                            // Remove active class from all dots
+                            dots.forEach(dot => dot.classList.remove('active'));
+                            
+                            // Add active class to the current dot
+                            if (dots[activeIndex]) {
+                                dots[activeIndex].classList.add('active');
+                            }
+                        }
+                    });
+                }, {
+                    root: scrollContainer, // Check intersection relative to the scroll container
+                    threshold: 0.6, // Trigger when 60% of the card is visible
+                    rootMargin: "0px"
+                });
+
+                // Start observing all cards in this section
+                cards.forEach(card => {
+                    observer.observe(card);
+                });
             });
-            
-            // Removed code to update the current year for the footer
         });
     </script>
 </body>
