@@ -1673,3 +1673,163 @@ a.text-link:hover {
         margin-right: 0;
     }
     }
+/* -------------------------------------- */
+/* --- 5. Styles for our-creations-showcase.html --- */
+/* -------------------------------------- */
+
+/* --- Store Hero (Scaling/Floating Animation) --- */
+@keyframes zoomInOut {
+    0% { transform: scale(0.98); opacity: 0.9; }
+    50% { transform: scale(1.02); opacity: 1; }
+    100% { transform: scale(0.98); opacity: 0.9; }
+}
+
+.store-hero {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, var(--color-secondary), var(--color-accent)); /* Subtle gradient */
+    border-radius: 8px;
+    margin-bottom: 50px;
+    animation: zoomInOut 6s ease-in-out infinite; /* Apply the smooth animation */
+    transition: all 0.5s ease;
+}
+
+.store-hero .hero-title {
+    font-size: 2.8rem;
+    color: var(--color-primary);
+    margin-bottom: 10px;
+    font-weight: 800;
+}
+
+.store-hero .hero-tagline {
+    font-size: 1.3rem;
+    color: var(--color-primary);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* --- Category Headings (Wowing) --- */
+.category-section {
+    margin-bottom: 60px;
+    padding-top: 20px;
+    border-top: 1px solid var(--color-secondary);
+}
+
+.category-title {
+    font-size: 2rem;
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 10px 0;
+    position: relative;
+}
+
+.category-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--color-accent);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* --- Product List (Vertical Alignment and Responsiveness) --- */
+.product-list {
+    display: flex;
+    flex-direction: column; /* Vertical stacking */
+    gap: 25px; /* Spacing between cards */
+    max-width: 800px; /* Constrain the overall width for readability */
+    margin: 0 auto; /* Center the list */
+}
+
+.product-card {
+    display: flex; /* Flex container for content inside the card */
+    align-items: center; /* Vertically center image and details */
+    background-color: var(--color-text-light); /* White background */
+    border: 1px solid var(--color-secondary);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(28, 46, 70, 0.08);
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(28, 46, 70, 0.15);
+}
+
+.product-image {
+    width: 120px; /* Fixed size for vertical alignment */
+    height: 120px;
+    object-fit: cover;
+    flex-shrink: 0; /* Prevents image from shrinking */
+}
+
+.card-details {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.product-name {
+    color: var(--color-primary);
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+}
+
+.product-desc {
+    color: var(--color-text-dark);
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+    opacity: 0.8;
+}
+
+/* --- Coming Soon Button --- */
+.coming-soon-btn {
+    align-self: flex-start; /* Aligns button to the left */
+    padding: 10px 18px;
+    background-color: var(--color-accent); /* Light Blue Accent */
+    color: var(--color-primary);
+    border: none;
+    border-radius: 50px; /* Pill shape */
+    font-weight: bold;
+    font-size: 0.9rem;
+    cursor: default;
+    transition: background-color 0.3s;
+}
+
+/* --- Responsiveness for Product Cards --- */
+
+@media (max-width: 650px) {
+    .product-card {
+        flex-direction: column; /* Stack image and text vertically on small screens */
+        text-align: center;
+    }
+    .product-image {
+        width: 100%; /* Image takes full width at the top */
+        height: 200px;
+        border-radius: 12px 12px 0 0;
+    }
+    .card-details {
+        padding: 20px 15px;
+        align-items: center; /* Center text and button */
+    }
+    .product-name {
+        font-size: 1.3rem;
+    }
+    .coming-soon-btn {
+        align-self: center; /* Center button when stacked */
+    }
+    .store-hero .hero-title {
+        font-size: 2rem;
+    }
+    .store-hero .hero-tagline {
+        font-size: 1rem;
+    }
+    .category-title {
+        font-size: 1.5rem;
+    }
+}
