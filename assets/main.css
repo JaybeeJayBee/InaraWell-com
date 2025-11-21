@@ -411,6 +411,14 @@ body {
     color: var(--color-accent) !important;
 }
 
+/* CRITICAL FIX: Ensure Footer Social Icons are Visible and Light Blue */
+.site-footer .social-links a i {
+    display: inline-block !important; /* Force visibility */
+    opacity: 1 !important;           /* Force full opacity */
+    color: var(--color-secondary) !important; /* Light Blue on Dark Background */
+}
+
+
 .footer-bottom {
     display: flex;
     justify-content: center;
@@ -1426,6 +1434,14 @@ a.text-link:hover {
     transform: scale(1.1);
     color: var(--color-accent);
 }
+
+/* CRITICAL FIX for Contact Page Icon Visibility (Dark Blue) */
+.social-links a i {
+    display: inline-block !important;
+    opacity: 1 !important;
+    color: var(--color-primary) !important; 
+}
+
 
 /* --- CRITICAL FIX FOR INVISIBLE SOCIAL ICONS --- */
 /* Forces Font Awesome icons to display correctly and inherit the primary color */
