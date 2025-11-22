@@ -42,8 +42,8 @@ body {
 /* -------------------------------------- */
 #nav-trigger {
     position: fixed;
-    top: 20px;
-    right: 20px;
+    top: 25px; /* Restored to 25px offset from the blueprint */
+    right: 25px; /* Restored to 25px offset from the blueprint */
     width: 50px;
     height: 50px;
     background-color: var(--color-primary);
@@ -76,33 +76,39 @@ body {
 /* --- 2. Navigation Menu (Overlay) --- */
 /* -------------------------------------- */
 
-/* Blueprint Requirement: Use the deepest brand color (--color-primary) */
 #nav-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    /* Use Primary color with 98% opacity for the required base overlay color */
     background-color: rgba(28, 46, 70, 0.98); 
     color: var(--color-text-light);
     z-index: 1000;
     transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
     display: flex;
     flex-direction: column;
-    /* Use flex-start to accommodate the new top Brand Header */
     align-items: center;
     justify-content: flex-start;
-    padding-top: 50px; /* Space for the header */
-    overflow: auto; /* Allow scrolling if menu content is large */
+    padding-top: 50px; 
+    overflow: auto; 
+    
+    /* *** CRITICAL FIX: Ensures overlay is hidden on page load *** */
+    opacity: 0;
+    visibility: hidden;
+}
+
+#nav-overlay.visible {
+    opacity: 1;
+    visibility: visible;
 }
 
 /* Close Button (X) */
-#nav-close.close-btn { /* Added .close-btn class to rule */
+#nav-close.close-btn { 
     position: absolute;
-    top: 25px; /* Adjusted position to match icon offset */
+    top: 25px; /* Adjusted to match icon offset */
     right: 25px;
-    font-size: 2.5rem; /* Slightly reduced size for compactness */
+    font-size: 2.5rem; 
     background: none;
     border: none;
     color: var(--color-text-light);
@@ -110,6 +116,12 @@ body {
     padding: 10px;
     transition: transform 0.5s, opacity 0.5s;
     z-index: 1002;
+}
+
+/* AI Decision: Spin/Fade-Out Animation for closing */
+#nav-close.animate-close {
+    transform: rotate(180deg);
+    opacity: 0;
 }
 
 
