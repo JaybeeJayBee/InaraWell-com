@@ -40,17 +40,17 @@ body {
 /* -------------------------------------- */
 /* --- 1. Floating Overlay Icon (Trigger) --- */
 /* -------------------------------------- */
-#floating-nav-icon { /* Updated ID from nav-trigger to match blueprint */
+#nav-trigger {
     position: fixed;
-    top: 25px; /* Offset to 25px as required */
-    right: 25px; /* Offset to 25px as required */
+    top: 20px;
+    right: 20px;
     width: 50px;
     height: 50px;
     background-color: var(--color-primary);
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    display: flex; 
+    display: flex;
     flex-direction: column;
     justify-content: space-around;
     padding: 10px;
@@ -58,7 +58,7 @@ body {
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
-#floating-nav-icon .bar {
+#nav-trigger .bar {
     width: 100%;
     height: 3px;
     background-color: var(--color-text-light);
@@ -66,10 +66,11 @@ body {
 }
 
 /* Visibility Control (Scroll) */
-#floating-nav-icon.is-hidden { /* Updated ID */
+#nav-trigger.is-hidden {
     transform: translateY(-100px);
     opacity: 0;
 }
+
 
 /* -------------------------------------- */
 /* --- 2. Navigation Menu (Overlay) --- */
